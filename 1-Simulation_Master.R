@@ -9,7 +9,7 @@ library(onewaytests)
 
 Sys.setlocale("LC_ALL", "English")
 # ==============================================================================
-# 1. DATA GENERATION FUNCTION (Protected with Centering and Scaling)
+# 1. DATA GENERATION FUNCTION (with Centering and Scaling)
 # ==============================================================================
 generate_data <- function(n_vec, var_vec, dist_type = "normal", effect_size = c(0,0,0)) {
   k <- length(n_vec)
@@ -78,7 +78,7 @@ scenarios <- expand.grid(
 )
 
 # ==============================================================================
-# 4. DUAL-ENGINE PARALLEL MONTE CARLO LOOP
+# 4. PARALLELIZED MONTE CARLO SIMULATION LOOP
 # ==============================================================================
 cores <- parallel::detectCores() - 1 
 cl <- makeCluster(cores)
