@@ -57,7 +57,7 @@ df_multi <- data.frame(
 # Plotting the Graph (3x3 Matrix)
 p = ggplot(df_multi, aes(x = Type1_Error, y = Power, color = Test, shape = Test)) +
   
-  # Safe Zone (Gray Strip) - xmax 0.22
+  # Bradley's Robustness Interval (Gray Area) - xmax 0.22
   annotate("rect", xmin = 0.025, xmax = 0.075, ymin = -Inf, ymax = Inf, alpha = 0.15, fill = "black") +
   geom_vline(xintercept = c(0.025, 0.075), linetype = "dotted", color = "gray30", linewidth = 0.8) +
   geom_vline(xintercept = 0.05, linetype = "dashed", color = "black", linewidth = 0.8) +
