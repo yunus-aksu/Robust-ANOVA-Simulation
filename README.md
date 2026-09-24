@@ -14,17 +14,17 @@ Kruskal-Wallis Test
 20% Trimmed Welch ANOVA
 Harrell-Davis Quantile Bootstrap Test (HD_Boot)
 Repository Structure and Files
-├── 1-Simulation_Master.R          # Core parallel Monte Carlo simulation script (10,000 iterations)
-├── 2-Empirical_Application.R         # Empirical validation on Wisconsin Breast Cancer dataset (WDBC)
-├── 3-Data_Visualization.R             # Generates all 4 publication-ready figures (300 DPI)
-├── S1_Type1_Error_Summary.csv   # Compiled Type I error rates across simulation scenarios
-├── S2_Master_Results.csv        # Master dataset (Type I error, Raw power, Size-Adjusted power)
-├── Cancer_RealData_Desc.csv     # Descriptive anatomy of clinical tissue compactness groups
-├── Cancer_RealData_Results.csv   # Hypothesis decisions and p-values on clinical data
-├── Figure1_Type1_Error_Heatmap.png   # Heatmap of Type I error control (Bradley's limits)
-├── Figure2_3x3_Size_Power_Matrix.png # Size-power trade-off matrix
-├── Figure3_Power_Comparison.png      # Spurious vs. Size-Adjusted power comparison
-└── Figure4_Decision_Matrix.png       # Practical evidence-based decision matrix
+--> 1-Simulation_Master.R          # Core parallel Monte Carlo simulation script (10,000 iterations)
+--> 2-Empirical_Application.R         # Empirical validation on Wisconsin Breast Cancer dataset (WDBC)
+--> 3-Data_Visualization.R             # Generates all 4 publication-ready figures (300 DPI)
+--> S1_Type1_Error_Summary.csv   # Compiled Type I error rates across simulation scenarios
+--> S2_Master_Results.csv        # Master dataset (Type I error, Raw power, Size-Adjusted power)
+--> Cancer_RealData_Desc.csv     # Descriptive anatomy of clinical tissue compactness groups
+--> Cancer_RealData_Results.csv   # Hypothesis decisions and p-values on clinical data
+--> Figure1_Type1_Error_Heatmap.png   # Heatmap of Type I error control (Bradley's limits)
+--> Figure2_3x3_Size_Power_Matrix.png # Size-power trade-off matrix
+--> Figure3_Power_Comparison.png      # Spurious vs. Size-Adjusted power comparison
+--> Figure4_Decision_Matrix.png       # Practical evidence-based decision matrix
 Prerequisites
 To run the replication scripts, ensure you have R (>= 4.0.0) installed along with the following packages:
 
