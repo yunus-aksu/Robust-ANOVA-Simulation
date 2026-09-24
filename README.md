@@ -1,30 +1,53 @@
-# R Code for: On Robust One-Way Analysis of Variance: A Simulation Study
+R Code for: Type I Error and Size-Adjusted Power Behavior of One-Way ANOVA Alternatives Under Heteroscedasticity and Extreme Skewness: A Monte Carlo Study
+Overview
+This repository contains the R scripts, datasets, and high-resolution visual outputs for the paper "Type I Error and Size-Adjusted Power Behavior of One-Way ANOVA Alternatives Under Heteroscedasticity and Extreme Skewness: A Monte Carlo Study".
 
-## Overview
-This repository contains the R scripts and datasets used in the methodology article, *"On Robust One-Way Analysis of Variance: A Simulation Study"*. The provided codes allow researchers to fully replicate the 10,000-iteration Monte Carlo simulation, the 3x3 matrix visualizations, and the empirical application assessing the robustness and statistical power of five distinct mean-comparison tests (Classical ANOVA, Welch ANOVA, Brown-Forsythe, Kruskal-Wallis, and 20% Trimmed Welch ANOVA) under pathological data conditions (non-normality, unbalanced designs, and severe variance heterogeneity).
+The provided code allows researchers to fully replicate the 10,000-iteration Monte Carlo simulation (spanning 135 experimental conditions), reproduce the 4 publication-ready figures (300 DPI), and run the empirical application on the Wisconsin Breast Cancer (WDBC) dataset.
 
-## Repository Structure and Files
+Evaluated Statistical Procedures
+The study benchmarks six location procedures across K = 3 independent groups under non-normality, heteroscedasticity, and unbalanced designs:
 
-### 1. R Scripts
-* `Simulation_Master.R`: The core script that executes the dual-engine parallel Monte Carlo simulation. It calculates empirical Type I error rates and computes statistical power across 27 combined scenarios based on Bradley's liberal robustness criterion.
-* `Empirical_Application.R`: An algorithmic script that searches and extracts a specific sub-sample from the historical Michelson-Morley speed of light dataset (`morley`). It empirically demonstrates the pathological breakdown of Classical ANOVA under negative variance pairing (4:2:1 ratio) in real-world data.
-* `Figure_1_Plot.R`: The visualization script utilizing `ggplot2` and `ggrepel` to generate the publication-ready 3x3 matrix plot (Figure 1), illustrating the Size-Power trade-off across different variance structures.
+Classic One-Way ANOVA (F-test)
+Welch ANOVA
+Brown-Forsythe ANOVA (F^*)
+Kruskal-Wallis Test
+20% Trimmed Welch ANOVA
+Harrell-Davis Quantile Bootstrap Test (HD_Boot)
+Repository Structure and Files
+├── 1-Simulation_Master.R          # Core parallel Monte Carlo simulation script (10,000 iterations)
+├── 2-Empirical_Application.R         # Empirical validation on Wisconsin Breast Cancer dataset (WDBC)
+├── 3-Data_Visualization.R             # Generates all 4 publication-ready figures (300 DPI)
+├── S1_Type1_Error_Summary.csv   # Compiled Type I error rates across simulation scenarios
+├── S2_Master_Results.csv        # Master dataset (Type I error, Raw power, Size-Adjusted power)
+├── Cancer_RealData_Desc.csv     # Descriptive anatomy of clinical tissue compactness groups
+├── Cancer_RealData_Results.csv   # Hypothesis decisions and p-values on clinical data
+├── Figure1_Type1_Error_Heatmap.png   # Heatmap of Type I error control (Bradley's limits)
+├── Figure2_3x3_Size_Power_Matrix.png # Size-power trade-off matrix
+├── Figure3_Power_Comparison.png      # Spurious vs. Size-Adjusted power comparison
+└── Figure4_Decision_Matrix.png       # Practical evidence-based decision matrix
+Prerequisites
+To run the replication scripts, ensure you have R (>= 4.0.0) installed along with the following packages:
 
-### 2. Output Data (Supplementary Materials)
-* `Table_S1_Type1_Error.csv`: The complete compiled results for empirical Type I error rates across all 27 simulated scenarios.
-* `Table_S2_Statistical_Power.csv`: The complete compiled results for statistical power.
-* `Figure_1.tiff`: The high-resolution (600 DPI) output of the trade-off plot.
+# Required Packages
+install.packages(c("ggplot2", "dplyr", "tidyr", "scales", "ggrepel",
+                   "WRS2", "onewaytests", "doParallel", "foreach"))
+How to Run the Replication
+Clone the Repository:
 
-## Prerequisites
-To run the scripts seamlessly, ensure you have R installed along with the following packages:
-- **Statistical Analysis:** `WRS2` (For Trimmed Welch ANOVA), `onewaytests` (For Brown-Forsythe test)
-- **Parallel Computing:** `doParallel`, `foreach`
-- **Visualization:** `ggplot2`, `ggrepel`
+git clone https://github.com/yunus-aksu/Robust-ANOVA-Simulation.git
+cd Robust-ANOVA-Simulation
+Run Monte Carlo Simulation: Open Simulation_Master.R in RStudio or run via terminal:
 
-## How to Run the Replication
-1. Clone this repository to your local machine or download the `.R` files directly.
-2. Open the scripts in RStudio.
-3. Install the required packages if you haven't already using `install.packages()`.
-4. Source `Simulation_Master.R`. The parallel computing backend will automatically utilize your machine's available cores to accelerate the 10,000 iterations.
-5. Run `Figure_1_Plot.R` to reproduce the high-resolution visualizations based on the generated data.
-6. Run `Empirical_Application.R` to observe the real-world vulnerability of classical methods using the Michelson-Morley dataset.
+source("1-Simulation_Master.R")
+Note: Automatically uses parallel processing cores to accelerate 10,000 iterations.
+
+Generate Publication Figures: Run Master_Figures.R to reproduce Figures 1–4 at 300 DPI:
+
+source("3-Data_Visualization.R")
+Run Real Data Application: Run RealData_Benchmark.R to reproduce the clinical application on benign tissue compactness:
+
+source("2-Empirical_Application.R")
+Author & Contact
+Yunus Aksu (Corresponding Author)
+Email: yunusaksu011@gmail.com
+ORCID: 0009-0003-0437-0121
